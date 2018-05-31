@@ -6,6 +6,13 @@ class Api::ContactsController < ApplicationController
     else
       render json: []
     end
+
+    group_name = params[:group]
+    if group_name
+      group = Group.find_by(name: group_name)
+      @groups = contact.groups
+    end
+
   end
 
   def show
